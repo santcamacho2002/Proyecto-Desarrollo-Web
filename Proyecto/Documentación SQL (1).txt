@@ -1,0 +1,57 @@
+-- Creación de la tabla trade
+DROP TABLE IF EXISTS trade;
+CREATE TABLE trade (
+  id INT PRIMARY KEY,
+  nombre VARCHAR(200) NOT NULL,
+  sitio VARCHAR(200) NOT NULL
+);
+
+
+-- Creación de la tabla tools
+DROP TABLE IF EXISTS tools;
+CREATE TABLE tools (
+  id INT PRIMARY KEY,
+  nombre VARCHAR(200) NOT NULL,
+  descripcion VARCHAR(200) NOT NULL,
+  image_url VARCHAR(200) NOT NULL,
+  marca INT NOT NULL,
+  precio_referencia INT NOT NULL,
+  ciudad VARCHAR(200) NOT NULL,
+  cantidad INT NOT NULL,
+  FOREIGN KEY (marca) REFERENCES trade(id)
+);
+
+
+-- Creación de la tabla users
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    username VARCHAR(200),
+    pswd VARCHAR(200),
+    token VARCHAR(200)
+);
+
+
+-- Inserciones para la tabla tools
+INSERT INTO tools (id, nombre, descripcion, image_url, marca, precio_referencia, ciudad, cantidad) 
+VALUES (1, 'Martillo', 'Herramienta que sirve para martillar', 'https://homecenterco.scene7.com/is/image/SodimacCO/97957', 1, 100, 'Bogota', 10);
+INSERT INTO tools (id, nombre, descripcion, image_url, marca, precio_referencia, ciudad, cantidad) 
+VALUES (2, 'Taladro', 'Herramienta que sirve para taladrar', 'https://belltec.com.co/6906-large_default/taladro-de-rotacion-industrial-38-pulg-dewalt-dwd014-b3.jpg', 2, 200, 'Medellin', 20);
+INSERT INTO tools (id, nombre, descripcion, image_url, marca, precio_referencia, ciudad, cantidad) 
+VALUES (3, 'Destornillador', 'Herramienta que sirve para atornillar', 'https://inversionesproin.com/wp-content/uploads/2020/07/60004.jpeg', 3, 300, 'Cali', 30);
+
+
+
+-- Inserciones para la tabla trade
+INSERT INTO trade (id, nombre, sitio) VALUES (1, 'DeWalt', 'https://www.dewalt.com');
+INSERT INTO trade (id, nombre, sitio) VALUES (2, 'Bosch', 'https://www.bosch.com');
+INSERT INTO trade (id, nombre, sitio) VALUES (3, 'Makita', 'https://www.makitatools.com/es/');
+
+
+-- Inserciones para la tabla users
+INSERT INTO users (id, username, pswd)
+VALUES (1, 'user1', 'pswd1');
+INSERT INTO users (id, username, pswd)
+VALUES (2, 'user2', 'pswd2');
+INSERT INTO users (id, username, pswd)
+VALUES (3, 'user3', 'pswd3');
